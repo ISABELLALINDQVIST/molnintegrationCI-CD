@@ -37,7 +37,7 @@ public class AuthorController {
         return ResponseEntity.ok(author);
     }
 
-    //uppdatera författare
+    //uppdatera författare med id
     @PatchMapping("/{id}")
     public ResponseEntity<Author> updateOneAuthor(@PathVariable Long id, @RequestBody Author newAuthor) {
         Author patchedAuthor = authorService.patchAuthor(newAuthor, id);
