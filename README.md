@@ -115,5 +115,5 @@ Jag har inkluderat tester i byggspecifikationen, som gör att man här får se t
 vilket underlättar fixadet av dessa.  
 
 ### Deploy  
-Efter att bygg och teststeget har lyckats så deployas applikationen till AWS Elastic Beanstalk. Den hanterar distrubution  
-och konfigurationen av själva miljön där applikationen körs.
+Efter att bygg och teststeget har lyckats så deployas applikationen till AWS Elastic Beanstalk.  
+Den hanterar distrubution och konfigurationen av själva miljön där applikationen körs.
