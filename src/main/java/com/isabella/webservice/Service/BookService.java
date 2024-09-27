@@ -29,7 +29,6 @@ public class BookService {
     public Books patchBook(Books book, Long id) {
         Optional<Books> currentBook = booksRepo.findById(id);
 
-        //TODO Check we get an actually book back
 
         if (!book.getTitle().equals(currentBook.get().getTitle())) currentBook.get().setTitle(book.getTitle());
         if (!book.getISBN().equals(currentBook.get().getISBN())) currentBook.get().setISBN(book.getISBN());

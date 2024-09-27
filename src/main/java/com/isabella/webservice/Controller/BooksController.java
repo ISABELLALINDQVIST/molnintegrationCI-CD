@@ -18,28 +18,28 @@ public class BooksController {
 
     private final BookService bookService;
 
-    //Get All Endpoint
+    //hämta alla
     @GetMapping("")
     public ResponseEntity<List<Books>> getAllBooks() {
         List<Books> books = bookService.getAllBooks();
 
         return ResponseEntity.ok(books);
     }
-
+    //hämta en bok
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Books>> getOneBook(@PathVariable long id) {
         Optional<Books> book = bookService.getOneBook(id);
 
         return ResponseEntity.ok(book);
     }
-
+    //skapa ny bok
     @PostMapping("")
     public ResponseEntity<Books> createNewBook(@RequestBody Books newBook) {
         Books book = bookService.saveBook(newBook);
 
         return ResponseEntity.ok(book);
     }
-
+    //uppdatera bok
     @PatchMapping("/{id}")
     public ResponseEntity<Books> updateOneBook(@PathVariable Long id,
                                                @RequestBody Books newBook) {
@@ -47,11 +47,11 @@ public class BooksController {
 
         return ResponseEntity.ok(patchedBook);
     }
-
+    //radera bok
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteOneBook(@PathVariable long id) {
         bookService.removeBook(id);
 
-        return ResponseEntity.ok("Removed Successfully!");
+        return ResponseEntity.ok("Boken är nu raderad!");
     }
 }

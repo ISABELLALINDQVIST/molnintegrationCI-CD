@@ -33,7 +33,7 @@ public class AuthorService {
     public Author patchAuthor(Author author, Long id) {
         Optional<Author> currentAuthor = authorRepo.findById(id);
 
-        // Check if fields are different and update accordingly
+        //kolla om vad som är olika och uppdatera
         if (!author.getName().equals(currentAuthor.get().getName())) currentAuthor.get().setName(author.getName());
         if (author.getAge() != currentAuthor.get().getAge()) currentAuthor.get().setAge(author.getAge());
 
