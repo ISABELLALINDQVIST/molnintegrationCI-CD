@@ -36,23 +36,25 @@ public class ApiClient {
                         getAllAuthors();
                         break;
                     case 2:
-                        scanner.nextLine(); // Rensa bufferten
+                        scanner.nextLine(); //rens rens
                         System.out.print("Ange namn på författare: ");
-                        String authorName = scanner.nextLine(); // Läser hela raden som namn
+                        String authorName = scanner.nextLine();
 
-                        int authorAge = -1; // Standardvärde för ålder
+                        int authorAge = -1;
                         while (true) {
                             System.out.print("Ange ålder: ");
                             try {
-                                authorAge = scanner.nextInt();  // Försöker läsa in ålder
-                                break; // Om det lyckas, bryter vi ut ur loopen
+                                //läsa ålder
+                                authorAge = scanner.nextInt();
+                                //om ålder tokig så bryt
+                                break;
                             } catch (InputMismatchException e) {
                                 System.out.println("Ogiltig inmatning, ange ett heltal för ålder.");
-                                scanner.next(); // Rensar bufferten
+                                scanner.next();
                             }
                         }
 
-                        createAuthor(authorName, authorAge); // Flyttad utanför while-loopen
+                        createAuthor(authorName, authorAge);
                         break;
 
                     case 3:
@@ -75,18 +77,18 @@ public class ApiClient {
                     case 6:
                         System.out.print("Ange författarens ID: ");
                         long authorIdToUpdate = scanner.nextLong();
-                        scanner.nextLine(); // Rensa bufferten efter nextLong
+                        scanner.nextLine();
                         System.out.print("Ange nytt namn: ");
-                        String newAuthorName = scanner.nextLine(); // Använd nextLine för att läsa hela raden
+                        String newAuthorName = scanner.nextLine();
                         System.out.print("Ange ny ålder: ");
                         int newAuthorAge;
                         while (true) {
                             try {
                                 newAuthorAge = scanner.nextInt();
-                                break; // Bryt om inmatningen var korrekt
+                                break;
                             } catch (InputMismatchException e) {
                                 System.out.println("Ogiltig inmatning, ange ett heltal för ålder.");
-                                scanner.next(); // Rensa felaktig inmatning
+                                scanner.next();
                             }
                         }
                         updateAuthor(authorIdToUpdate, newAuthorName, newAuthorAge);
@@ -130,7 +132,7 @@ public class ApiClient {
         }
 
 
-    // Hämta alla författare
+    //hämta alla författare
     private static void getAllAuthors() {
         try {
             URL url = new URL(BASE_URL + "/authors");
@@ -150,7 +152,7 @@ public class ApiClient {
         }
     }
 
-    // Hämta en författare
+    //hämta författare
     private static void getOneAuthor(long id) {
         try {
             URL url = new URL(BASE_URL + "/authors/" + id);
@@ -170,7 +172,7 @@ public class ApiClient {
         }
     }
 
-    // Skapa en ny författare
+    //ny författare
     private static void createAuthor(String name, int age) {
         try {
             URL url = new URL(BASE_URL + "/authors");
@@ -192,7 +194,7 @@ public class ApiClient {
         }
     }
 
-    // Uppdatera en författare
+    //uppdatera författare
     private static void updateAuthor(long id, String name, int age) {
         try {
             URL url = new URL(BASE_URL + "/authors/" + id);
@@ -214,7 +216,7 @@ public class ApiClient {
         }
     }
 
-    // Radera en författare
+    //radera författare
     private static void deleteAuthor(long id) {
         try {
             URL url = new URL(BASE_URL + "/authors/" + id);
@@ -227,7 +229,7 @@ public class ApiClient {
         }
     }
 
-    // Hämta alla böcker
+    //hämta alla böcker
     private static void getAllBooks() {
         try {
             URL url = new URL(BASE_URL + "/books");
@@ -247,7 +249,7 @@ public class ApiClient {
         }
     }
 
-    // Hämta en bok
+    //hämta bok
     private static void getOneBook(long id) {
         try {
             URL url = new URL(BASE_URL + "/books/" + id);
@@ -267,7 +269,7 @@ public class ApiClient {
         }
     }
 
-    // Skapa en ny bok
+    //skapa bok
     private static void createBook(String title, String isbn, long authorId) {
         try {
             URL url = new URL(BASE_URL + "/books");
@@ -289,7 +291,7 @@ public class ApiClient {
         }
     }
 
-    // Uppdatera en bok
+    //uppdatera bok
     private static void updateBook(long id, String title, String isbn, long authorId) {
         try {
             URL url = new URL(BASE_URL + "/books/" + id);
@@ -311,7 +313,7 @@ public class ApiClient {
         }
     }
 
-    // Radera en bok
+    //radera bok
     private static void deleteBook(long id) {
         try {
             URL url = new URL(BASE_URL + "/books/" + id);
