@@ -40,12 +40,12 @@ public class BooksController {
         return ResponseEntity.ok(book);
     }
     //uppdatera bok
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Books> updateOneBook(@PathVariable Long id,
                                                @RequestBody Books newBook) {
-        Books patchedBook = bookService.patchBook(newBook, id);
+        Books updatedBook = bookService.updateBook(newBook, id);
 
-        return ResponseEntity.ok(patchedBook);
+        return ResponseEntity.ok(updatedBook);
     }
     //radera bok
     @DeleteMapping("/{id}")

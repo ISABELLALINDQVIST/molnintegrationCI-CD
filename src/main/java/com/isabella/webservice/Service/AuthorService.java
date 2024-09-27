@@ -2,6 +2,7 @@ package com.isabella.webservice.Service;
 
 import com.isabella.webservice.Models.Author;
 import com.isabella.webservice.Repository.AuthorRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,15 +31,27 @@ public class AuthorService {
     }
 
     //uppdatera eller redigera författare
-    public Author patchAuthor(Author author, Long id) {
-        Optional<Author> currentAuthor = authorRepo.findById(id);
+    public Author updateAuthor(Author author, Long id) {
+        //hämta den aktuella författaren från databasen
+        Optional<Author> currentAuthorOpt = authorRepo.findById(id);
 
-        //kolla om vad som är olika och uppdatera
-        if (!author.getName().equals(currentAuthor.get().getName())) currentAuthor.get().setName(author.getName());
-        if (author.getAge() != currentAuthor.get().getAge()) currentAuthor.get().setAge(author.getAge());
+        //kontrollera om författaren finns
+        if (!currentAuthorOpt.isPresent()) {
+            throw new EntityNotFoundException("Författaren med ID " + id + " hittades inte");
+        }
 
-        return authorRepo.save(currentAuthor.get());
+        //hämta den aktuella författaren
+        Author currentAuthor = currentAuthorOpt.get();
+
+        //uppdatera alla fält med de nya värdena från det givna author-objektet
+        currentAuthor.setName(author.getName());
+        currentAuthor.setAge(author.getAge());
+
+        //spara den uppdaterade författaren tillbaka till databasen
+        return authorRepo.save(currentAuthor);
     }
+
+
 
     //radera författade på ID
     public void removeAuthor(Long id) {

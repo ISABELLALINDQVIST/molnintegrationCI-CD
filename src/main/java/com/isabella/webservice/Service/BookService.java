@@ -4,6 +4,9 @@ import com.isabella.webservice.Models.Books;
 import com.isabella.webservice.Repository.BooksRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.NoSuchElementException;
+
+
 
 import java.util.List;
 import java.util.Optional;
@@ -26,15 +29,23 @@ public class BookService {
         return booksRepo.save(book);
     }
 
-    public Books patchBook(Books book, Long id) {
-        Optional<Books> currentBook = booksRepo.findById(id);
+    public Books updateBook(Books book, Long id) {
+        Optional<Books> currentBookOpt = booksRepo.findById(id);
 
+        // Kontrollera om boken finns
+        if (!currentBookOpt.isPresent()) {
+            throw new NoSuchElementException("Boken med ID " + id + " hittades inte");
+        }
 
-        if (!book.getTitle().equals(currentBook.get().getTitle())) currentBook.get().setTitle(book.getTitle());
-        if (!book.getISBN().equals(currentBook.get().getISBN())) currentBook.get().setISBN(book.getISBN());
+        Books currentBook = currentBookOpt.get();
 
-        return booksRepo.save(currentBook.get());
+        // Uppdatera alla fält med de nya värdena från det givna book-objektet
+        currentBook.setTitle(book.getTitle());
+        currentBook.setISBN(book.getISBN());
+
+        return booksRepo.save(currentBook);
     }
+
 
     public void removeBook(Long id) {
         booksRepo.deleteById(id);

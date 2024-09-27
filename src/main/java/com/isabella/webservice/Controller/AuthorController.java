@@ -16,39 +16,38 @@ public class AuthorController {
 
     private final AuthorService authorService;
 
-    //hämta alla endpoint
+    // Hämta alla författare
     @GetMapping("")
     public ResponseEntity<List<Author>> getAllAuthors() {
         List<Author> authors = authorService.getAllAuthors();
         return ResponseEntity.ok(authors);
     }
 
-    //hämta författare på id
+    // Hämta författare med ID
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Author>> getOneAuthor(@PathVariable long id) {
         Optional<Author> author = authorService.getOneAuthor(id);
         return ResponseEntity.ok(author);
     }
 
-    //skapa ny författare
+    // Skapa ny författare
     @PostMapping("")
     public ResponseEntity<Author> createNewAuthor(@RequestBody Author newAuthor) {
         Author author = authorService.saveAuthor(newAuthor);
         return ResponseEntity.ok(author);
     }
 
-    //uppdatera författare med id
-    @PatchMapping("/{id}")
+    // Uppdatera författare med ID
+    @PutMapping("/{id}")
     public ResponseEntity<Author> updateOneAuthor(@PathVariable Long id, @RequestBody Author newAuthor) {
-        Author patchedAuthor = authorService.patchAuthor(newAuthor, id);
-        return ResponseEntity.ok(patchedAuthor);
+        Author updatedAuthor = authorService.updateAuthor(newAuthor, id);
+        return ResponseEntity.ok(updatedAuthor);
     }
 
-    //radera på id
+    // Radera författare med ID
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteOneAuthor(@PathVariable long id) {
         authorService.removeAuthor(id);
         return ResponseEntity.ok("Författaren är nu raderad!");
     }
 }
-
