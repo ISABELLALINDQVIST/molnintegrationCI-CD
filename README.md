@@ -43,13 +43,14 @@ Payload: Body - JSON
 ```
 Svar: 200 OK med det nyss skapade Author-objektet.
 
-- PATCH http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/authors/11  
+- PUT http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/authors/11  
 Uppdaterar en befintlig författare baserat på deras ID (11 i detta fall).   
 Payload: Body - JSON
 ``` {
-  "id": 11,
-  "age": 47
-  }
+  "name": "Updated Author",
+  "age": 50
+}
+
   ```
 Svar: 200 OK med det uppdaterade Author-objektet.
 

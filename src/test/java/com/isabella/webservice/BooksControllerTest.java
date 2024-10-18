@@ -67,7 +67,7 @@ public class BooksControllerTest {
         doNothing().when(bookService).removeBook(1L);
 
         ResponseEntity<String> response = booksController.deleteOneBook(1L);
-        assertEquals("Removed Successfully!", response.getBody());
+        assertEquals("Boken är nu raderad!", response.getBody());
         verify(bookService, times(1)).removeBook(1L);
     }
 }

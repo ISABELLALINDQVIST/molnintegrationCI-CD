@@ -67,7 +67,7 @@ public class AuthorControllerTest {
         doNothing().when(authorService).removeAuthor(1L);
 
         ResponseEntity<String> response = authorController.deleteOneAuthor(1L);
-        assertEquals("Author removed successfully!", response.getBody());
+        assertEquals("Författaren är nu raderad!", response.getBody());
         verify(authorService, times(1)).removeAuthor(1L);
     }
 }
