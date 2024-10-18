@@ -4,6 +4,11 @@
 Detta projekt är en Maven Spring Boot-applikation med CI/CD pipeline via GitHub Actions och AWS. 
 Syftet är att automatisera bygg-, test- och deploy-processen.
 
+## Installation
+- Klona ner detta repository
+- Starta Applikationen - WebserviceApplication
+- Starta Klienten - ApiClient
+
 ## Funktionalitet
 - Spring Boot webservice som hanterar HTTP-anrop.
 - CI/CD-pipeline med GitHub Actions för bygg och test.
@@ -36,7 +41,8 @@ Svar: 200 OK samt uppvisar den sökta författaren
 - POST http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/authors  
 Skapar en ny författare.   
 Payload: Body - JSON 
-```{
+```
+{
   "name": "George Orwell",
   "age": 46
   }
@@ -46,7 +52,8 @@ Svar: 200 OK med det nyss skapade Author-objektet.
 - PUT http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/authors/11  
 Uppdaterar en befintlig författare baserat på deras ID (11 i detta fall).   
 Payload: Body - JSON
-``` {
+``` 
+{
   "name": "Updated Author",
   "age": 50
 }
@@ -57,7 +64,8 @@ Svar: 200 OK med det uppdaterade Author-objektet.
 - DELETE http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/authors/11  
 Tar bort en författare baserat på deras ID (11 i detta fall).   
 Payload: Body - JSON
-```{
+```
+{
   "id": 11
   }
   ```
@@ -75,17 +83,19 @@ Svar: 200 OK med den sökta boken
 - POST http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/books  
 Skapar en ny bok.   
 Payload: Body - JSON
- ``` {
+ ``` 
+{
   "title": "1984",
   "isbn": "978-0451524935"
   }
   ```
 Svar: 200 OK med den nyss skapade boken.
 
-- PATCH http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/books/16  
+- PUT http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/books/16  
 Uppdaterar en befintlig bok baserat på dess ID (16 i detta fall).   
 Payload: Body - JSON
-```{
+```
+{
   "title": "1985",
   "isbn": "978-0451524935"
   }
@@ -95,6 +105,10 @@ Svar: 200 OK med den uppdaterade boken.
 - DELETE http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/books/16  
 Tar bort en bok baserat på dess ID (16 i detta fall).   
 Svar: 200 OK med ett meddelande om framgång ("Boken är nu raderad!").
+
+## Klienten
+ApiClient är en enkel Java-klient för att interagera med mitt API som hanterar författare och böcker.  
+Den innehåller funktionerna hämta, skapa, uppdatera och radera.
 
 ## Beskrivning av AWS Pipeline process  
 AWS CodePipeline är en kontinuerlig leveransservice vi använde oss utav som automatiserar bygg, test, och deployprocessen.  
