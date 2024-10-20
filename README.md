@@ -28,6 +28,11 @@ Syftet är att automatisera bygg-, test- och deploy-processen.
 ### AWS Deployment Process:
 - Applikationen hostas på AWS EC2.
 
+## Klienten
+ApiClient är en enkel Java-klient för att interagera med mitt API som hanterar författare och böcker.  
+Den innehåller funktionerna hämta, skapa, uppdatera och radera som du enkelt når via dem olika valen i menyn.
+
+
 ## Endpoints (testning via Postman)
 ### Endpoints för AuthorController:
 - GET http://molnintegrationbooks-env.eba-zr2ertjv.eu-north-1.elasticbeanstalk.com/authors  
@@ -106,9 +111,6 @@ Svar: 200 OK med den uppdaterade boken.
 Tar bort en bok baserat på dess ID (16 i detta fall).   
 Svar: 200 OK med ett meddelande om framgång ("Boken är nu raderad!").
 
-## Klienten
-ApiClient är en enkel Java-klient för att interagera med mitt API som hanterar författare och böcker.  
-Den innehåller funktionerna hämta, skapa, uppdatera och radera.
 
 ## Beskrivning av AWS Pipeline process  
 AWS CodePipeline är en kontinuerlig leveransservice vi använde oss utav som automatiserar bygg, test, och deployprocessen.  
